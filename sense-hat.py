@@ -51,7 +51,7 @@ sense.stick.direction_middle = middle
 while True:
     match mode:
         case "color":
-            #framebuffer[1] = sense.colour.colour # return tuple of (r,g,b,clear)
+            framebuffer[1] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
             print(sense.colour.colour)
             sense.colour.integration_time
         case "pressure":
