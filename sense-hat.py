@@ -1,4 +1,5 @@
 from sense_hat import SenseHat
+import time
 
 sense = SenseHat()
 
@@ -16,6 +17,7 @@ framebuffer = [b] * 64
 
 while True:
     pressure = bin(int(sense.pressure*1000))
+    print(pressure)
     for i in range(len(pressure)):
         match pressure[i]:
             case "0":
@@ -25,3 +27,4 @@ while True:
             case _:
                 framebuffer[i] = g
     sense.set_pixels(framebuffer)
+    time.sleep(500)
