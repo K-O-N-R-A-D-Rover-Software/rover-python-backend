@@ -29,5 +29,5 @@ while True:
                 framebuffer[i] = g
     sense.set_pixels(framebuffer)
     print("test")
-    time.sleep(500)
+    time.sleep(1)
     print("test2")
