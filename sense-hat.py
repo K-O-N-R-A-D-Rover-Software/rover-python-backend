@@ -28,4 +28,6 @@ while True:
             case _:
                 framebuffer[i] = g
     sense.set_pixels(framebuffer)
+    print("test")
     time.sleep(500)
+    print("test2")
