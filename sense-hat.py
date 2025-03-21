@@ -16,7 +16,7 @@ p = (255,105, 180)
 
 sense.color.gain = 16
 
-sense.color.integration_cycles = 64
+sense.color.integration_cycles = 32
 
 
 framebuffer = []
@@ -51,7 +51,9 @@ sense.stick.direction_middle = middle
 while True:
     match mode:
         case "color":
-            framebuffer[1] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
+            framebuffer[0] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
+            for i in range(3):
+                framebuffer[0][i] = round(framebuffer[0][i]*255/256)
             print(sense.colour.colour[:3])
             sense.colour.integration_time
         case "pressure":
