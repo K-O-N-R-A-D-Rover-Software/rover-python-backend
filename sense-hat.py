@@ -10,18 +10,18 @@ w = (255,255,255)
 n = (0,0,0)
 p = (255,105, 180)
 
-sense.show_message("DOOM", text_colour=r)
+#sense.show_message("DOOM", text_colour=r)
 
 framebuffer = []
 
 while True:
     pressure = sense.pressure
     for i in range(64):
-        match pressure:
+        match pressure[i]:
             case 0:
                 framebuffer[i] = "n"
             case 1:
                 framebuffer[i] = "r"
             case _:
-                framebuffer[i] = "n"
+                framebuffer[i] = "g"
     sense.set_pixels(framebuffer)
