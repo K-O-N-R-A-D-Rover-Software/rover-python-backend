@@ -18,8 +18,8 @@ framebuffer = [b] * 64
 while True:
     pressure = bin(int(sense.pressure*1000))
     print(pressure)
-    for i in range(len(pressure)):
-        match pressure[i]:
+    for i in range(len(pressure)+2):
+        match pressure[i+2]:
             case "0":
                 framebuffer[i] = n
             case "1":
