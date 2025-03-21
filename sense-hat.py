@@ -19,8 +19,8 @@ while True:
     pressure = bin(int(sense.pressure*1000))
     pressure = pressure[2:]
     print(pressure)
-    for i in range(len(pressure)+2):
-        match pressure[i+2]:
+    for i in range(len(pressure)):
+        match pressure[i]:
             case "0":
                 framebuffer[i] = n
             case "1":
