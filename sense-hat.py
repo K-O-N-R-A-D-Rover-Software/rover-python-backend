@@ -14,7 +14,7 @@ p = (255,105, 180)
 #sense.show_message("DOOM", text_colour=r)
 
 
-sense.color.gain = 60
+sense.color.gain = 16
 
 sense.color.integration_cycles = 64
 
