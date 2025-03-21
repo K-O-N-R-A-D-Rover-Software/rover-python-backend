@@ -12,16 +12,16 @@ p = (255,105, 180)
 
 #sense.show_message("DOOM", text_colour=r)
 
-framebuffer = ["b"] * 64
+framebuffer = [b] * 64
 
 while True:
     pressure = bin(int(sense.pressure*1000))
     for i in range(len(pressure)):
         match pressure[i]:
             case 0:
-                framebuffer[i] = "n"
+                framebuffer[i] = n
             case 1:
-                framebuffer[i] = "r"
+                framebuffer[i] = r
             case _:
-                framebuffer[i] = "g"
+                framebuffer[i] = g
     sense.set_pixels(framebuffer)
