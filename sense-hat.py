@@ -53,7 +53,7 @@ while True:
         case "color":
             framebuffer[0] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
             framebuffer[0] = (round(framebuffer[0][0]*255/256), round(framebuffer[0][1]*255/256), round(framebuffer[0][2]*255/256))
-            print(sense.colour.colour[:3])
+            print(framebuffer[0])
             sense.colour.integration_time
         case "pressure":
             pressure = bin(int(sense.acceleration*1000))
