@@ -15,7 +15,7 @@ p = (255,105, 180)
 framebuffer = []
 
 while True:
-    pressure = sense.pressure
+    pressure = bin(sense.pressure)
     for i in range(64):
         match pressure[i]:
             case 0:
