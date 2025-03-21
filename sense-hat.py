@@ -12,5 +12,14 @@ p = (255,105, 180)
 
 sense.show_message("DOOM", text_colour=r)
 
+framebuffer = []
+
 while True:
-    sense.show_message("Pressure: "+str(round(sense.pressure,2))+" mB", text_colour=r, scroll_speed=0.05)
+    pressure = sense.pressure
+    for i in range(64):
+        match pressure:
+            case 0:
+                framebuffer[i] = "n"
+            case 1:
+                framebuffer[i] = "r"
+    sense.set_pixels(framebuffer)
