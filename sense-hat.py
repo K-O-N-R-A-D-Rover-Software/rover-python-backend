@@ -22,6 +22,7 @@ sense.color.integration_cycles = 64
 framebuffer = []
 
 def reset():
+    global framebuffer
     framebuffer = [n] * 64
 
 reset()
