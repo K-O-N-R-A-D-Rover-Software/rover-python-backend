@@ -11,3 +11,6 @@ n = (0,0,0)
 p = (255,105, 180)
 
 sense.show_message("DOOM", text_colour=r)
+
+while True:
+    sense.show_message("Pressure: "+str(round(sense.pressure,2))+" mB", text_colour=r, scroll_speed=0.05)
