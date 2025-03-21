@@ -22,4 +22,6 @@ while True:
                 framebuffer[i] = "n"
             case 1:
                 framebuffer[i] = "r"
+            case _:
+                framebuffer[i] = "n"
     sense.set_pixels(framebuffer)
