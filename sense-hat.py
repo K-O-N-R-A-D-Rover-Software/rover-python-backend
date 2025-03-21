@@ -12,3 +12,4 @@ w = (255,255,255)
 n = (0,0,0)
 p = (255,105, 180)
 
+sense.show_message("Hello world")
