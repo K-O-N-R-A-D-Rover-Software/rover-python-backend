@@ -13,21 +13,56 @@ p = (255,105, 180)
 
 #sense.show_message("DOOM", text_colour=r)
 
-framebuffer = [b] * 64
+
+sense.color.gain = 60
+
+sense.color.integration_cycles = 64
+
+
+framebuffer = []
+
+def reset():
+    framebuffer = [n] * 64
+
+reset()
+mode = "color"
+
+def up():
+    mode = "color"
+sense.stick.direction_up = up
+
+def down():
+    mode = "pressure"
+sense.stick.direction_down = down
+
+def left():
+    mode = "pressure"
+sense.stick.direction_left = left
+
+def right():
+    mode = "pressure"
+sense.stick.direction_right = right
+
+def middle():
+    mode = "pressure"
+sense.stick.direction_middle = middle
 
 while True:
-    pressure = bin(int(sense.pressure*1000))
-    pressure = pressure[2:]
-    print(pressure)
-    for i in range(len(pressure)):
-        match pressure[i]:
-            case "0":
-                framebuffer[i] = n
-            case "1":
-                framebuffer[i] = r
-            case _:
-                framebuffer[i] = g
+    match mode:
+        case "color":
+            framebuffer[1] = sense.colour.colour # return tuple of (r,g,b,clear)
+            sense.colour.integration_time
+        case "pressure":
+            pressure = bin(int(sense.acceleration*1000))
+            data = pressure[2:]
+            print(data)
+            for i in range(len(data)):
+                match pressure[i]:
+                    case "0":
+                        framebuffer[i] = n
+                    case "1":
+                        framebuffer[i] = r
+                    case _:
+                        framebuffer[i] = g
     sense.set_pixels(framebuffer)
-    print("test")
-    time.sleep(1)
-    print("test2")
+    time.sleep(.2)
