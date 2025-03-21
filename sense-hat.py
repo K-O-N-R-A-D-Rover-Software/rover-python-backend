@@ -12,7 +12,7 @@ p = (255,105, 180)
 
 #sense.show_message("DOOM", text_colour=r)
 
-framebuffer = []
+framebuffer = [""] * 64
 
 while True:
     pressure = bin(int(sense.pressure*1000))
