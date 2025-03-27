@@ -25,6 +25,7 @@ def reset():
     global framebuffer
     framebuffer = [n] * 64
 
+
 reset()
 mode = "color"
 
@@ -46,6 +47,16 @@ sense.stick.direction_right = right
 
 def middle():
     mode = "pressure"
+sense.stick.direction_middle = middle
+
+sense.stick.direction_up = up
+
+sense.stick.direction_down = down
+
+sense.stick.direction_left = left
+
+sense.stick.direction_right = right
+
 sense.stick.direction_middle = middle
 
 while True:
