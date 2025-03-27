@@ -54,9 +54,8 @@ while True:
             framebuffer[0] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
             framebuffer[0] = (round(framebuffer[0][0]*255/256), round(framebuffer[0][1]*255/256), round(framebuffer[0][2]*255/256))
             print(framebuffer[0])
-            sense.colour.integration_time
         case "pressure":
-            pressure = bin(int(sense.acceleration*1000))
+            pressure = bin(int(sense.pressure*1000))
             data = pressure[2:]
             print(data)
             for i in range(len(data)):
@@ -67,5 +66,7 @@ while True:
                         framebuffer[i] = r
                     case _:
                         framebuffer[i] = g
+        case "acceleration":
+            sense.accel
     sense.set_pixels(framebuffer)
-    time.sleep(.2)
+    time.sleep(.1)
