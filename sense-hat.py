@@ -31,22 +31,28 @@ mode = "color"
 
 def up():
     mode = "color"
+    print("up")
 sense.stick.direction_up = up
 
 def down():
     mode = "pressure"
+    print("down")
 sense.stick.direction_down = down
 
 def left():
-    mode = "pressure"
+    mode = "acceleration"
+    print("left")
 sense.stick.direction_left = left
 
 def right():
     mode = "pressure"
+    print("right")
 sense.stick.direction_right = right
 
 def middle():
     mode = "pressure"
+    print("middle")
+
 sense.stick.direction_middle = middle
 
 sense.stick.direction_up = up
@@ -78,6 +84,6 @@ while True:
                     case _:
                         framebuffer[i] = g
         case "acceleration":
-            sense.accel
+            print(sense.accel)
     sense.set_pixels(framebuffer)
-    time.sleep(.1)
+    time.sleep(.5)
