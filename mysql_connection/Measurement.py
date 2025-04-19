@@ -52,7 +52,7 @@ class Measurement:
         self.accellerationInG: float = pAccellerationInG
 
     def toString(self) -> str:
-        return ("Measurement: " + self.timestamp + " (" + str(self.id) + "): " + 
-                str(self.pressureInhPa) + " hPa, " + str(self.tempInC) + " °C, " + 
-                str(self.magnetFieldInGauss) + " Gauss, " + str(self.gyroscopeInDPS) + " DPS, " +
-                str(self.accellerationInG) + " g")
+        return (self.timestamp + "#" + str(self.id) + "#" +
+                str(self.pressureInhPa) + "#" + str(self.tempInC) + "#" +
+                str(self.magnetFieldInGauss) + "#" + str(self.gyroscopeInDPS) + "#" +
+                str(self.accellerationInG))

@@ -27,7 +27,7 @@ def reset():
 
 
 reset()
-mode = "color"
+mode = "pressure"
 
 def up():
     mode = "color"
@@ -65,25 +65,26 @@ sense.stick.direction_right = right
 
 sense.stick.direction_middle = middle
 
-while True:
-    match mode:
-        case "color":
-            framebuffer[0] = sense.colour.colour[:3] # return tuple of (r,g,b,clear)
-            framebuffer[0] = (round(framebuffer[0][0]*255/256), round(framebuffer[0][1]*255/256), round(framebuffer[0][2]*255/256))
-            print(framebuffer[0])
-        case "pressure":
-            pressure = bin(int(sense.pressure*1000))
-            data = pressure[2:]
-            print(data)
-            for i in range(len(data)):
-                match pressure[i]:
-                    case "0":
-                        framebuffer[i] = n
-                    case "1":
-                        framebuffer[i] = r
-                    case _:
-                        framebuffer[i] = g
-        case "acceleration":
-            print(sense.accel)
-    sense.set_pixels(framebuffer)
-    time.sleep(.5)
+# return temperature from the humidity sensor in celsius
+def getTempInCelsius():
+    return sense.get_temperature()
+
+# return temperature from the pressure sensor in celsius
+def getTempFromPressureInCelsius():
+    return sense.get_temperature_from_pressure()
+
+# return humidity in percentage
+def getHumidityInPercentage():
+    return sense.get_humidity()
+
+# return pressure in millibars
+def getPressureInMillibars():
+    return sense.get_pressure()
+
+# return dictionary of x, y, z in unit G
+def get_accelerometer():
+    return sense.get_accelerometer_raw()
+
+# return dictionary of pitch, roll, yaw
+def getOrientationDict():
+    return sense.get_orientation()
