@@ -30,8 +30,7 @@ class Main:
         #Relative humidity, Temperature
         self.humidity = adafruit_hts221.HTS221(self.i2c)
         self.db = DatabaseHandler()
-        for i in range(20):
-            #sock.sendto(getMeasurement().encode(), REMOTE)
+        while True:
             self.getMeasurement()
             time.sleep(1)
 
@@ -55,7 +54,7 @@ class Main:
         self.db.insertMeasurement(pressure, humidityTemp, humidity, magx, magy, magz, gyrox, gyroy, gyroz, accelx, accely, accelz)
         # get latest measurement and send them to the app
         measurement = self.db.readLatestMeasurement()
-        self.sock.sendto(measurement.toString().encode(), self.REMOTE)
+        self.sock.sendto(measurement.toRemote().encode(), self.REMOTE)
 
 if __name__ == '__main__':
     Main()

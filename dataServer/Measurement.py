@@ -106,3 +106,5 @@ class Measurement:
                 str(self.magnetFieldXInGauss) + "#" + str(self.magnetFieldYInGauss) + "#" + str(self.magnetFieldZInGauss) + "#" +
                 str(self.gyroscopeXInRadPS) + "#" + str(self.gyroscopeYInRadPS) + "#" + str(self.gyroscopeZInRadPS) + "#" +
                 str(self.accellerationXInMS2) + "#" + str(self.accellerationYInMS2) + "#" + str(self.accellerationZInMS2))
+    def toRemote(self) -> str:
+        return ("mess#"+str(self.tempInC)+"#"+str(self.pressureInhPa)+"#"+str(self.humidityInPerc)+"#"+"dist")

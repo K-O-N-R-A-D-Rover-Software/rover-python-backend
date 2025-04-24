@@ -15,14 +15,16 @@ class Main:
                 print("successful handshake with " + str(address))
                 self.sock.sendto("ping".encode(), address)
                 self.lastPing = 0
-                return address
-                break
+                self.connected = True
+                self.REMOTE = address
+                return True
 
     def ping(self):
-        while True:
+        while self.connected:
             if self.lastPing >= 4000:
                 self.fullStop()
                 self.getClientIp()
+                return
             self.sock.sendto("ping".encode(), self.REMOTE)
             print("ping sent")
             time.sleep(.5)
@@ -63,8 +65,8 @@ class Main:
                         self.setDrivingMotors(float(data[1]),float(data[2]),float(data[3]),float(data[4]))
                         self.lastPing = 0
                     case "ping":
-                        print("ping")
-                        self.sock.sendto("ping".encode(), self.REMOTE)
+                        print("ping recieved")
+                        #self.sock.sendto("ping".encode(), self.REMOTE)
                         self.lastPing = 0
                     case "handshake":
                         self.getClientIp()
@@ -80,8 +82,10 @@ class Main:
         self.PORT = 5000
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind((self.IP, self.PORT))
-        self.REMOTE = self.getClientIp()
-        self.lastPing = -1
+        self.lastping = -1
+        self.connected = False
+        self.REMOTE = []
+        self.getClientIp()
         self.hat1 = MotorKit(i2c=board.I2C(), address = 0x60)
         self.hat2 = MotorKit(i2c=board.I2C(), address = 0x61)
         self.pingThread = threading.Thread(target=self.ping)
