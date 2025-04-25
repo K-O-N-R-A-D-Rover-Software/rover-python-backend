@@ -2,7 +2,9 @@ adafruit-circuitpython-lps2x
 adafruit-circuitpython-lsm9ds1
 adafruit-circuitpython-hts221
 adafruit-blinka
+adafruit-circuitpython-motorkit
 geopy
 pyserial
 pynmea2
 lgpio
+mariadb

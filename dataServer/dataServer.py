@@ -10,18 +10,26 @@ import socket
 
 class Main:
     def getClientIp(self):
+        print("waiting for handshake")
         while True:
-            data, address = self.sock.recvfrom(1024)
-            if (address!=""):
-                print(address)
-                return address
+            data, address = self.sock.recvfrom(64)
+            time.sleep(.1)
+            print(str(data)[2:6])
+            if (str(data)[2:6] == "ping" and address!=""):
+                print("successful handshake with " + str(address))
+                self.sock.sendto("ping".encode(), address)
+                self.lastPing = 0
+                self.connected = True
+                self.REMOTE = address
+                return True
 
     def __init__(self):
         self.IP = ""
         self.PORT = 5000
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind((self.IP, self.PORT))
-        self.REMOTE = self.getClientIp()
+        self.REMOTE = []
+        self.getClientIp()
         self.i2c = board.I2C()
         # Pressure
         self.pressure = adafruit_lps2x.LPS25(i2c_bus=self.i2c, address=0x5c)

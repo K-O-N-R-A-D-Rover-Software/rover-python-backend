@@ -85,8 +85,8 @@ class Main:
         self.lastping = -1
         self.connected = False
         self.REMOTE = []
-        self.getClientIp()
-        self.hat1 = MotorKit(i2c=board.I2C(), address = 0x60)
+        #self.getClientIp()
+        #self.hat1 = MotorKit(i2c=board.I2C(), address = 0x60)
         self.hat2 = MotorKit(i2c=board.I2C(), address = 0x61)
         self.pingThread = threading.Thread(target=self.ping)
         self.pingThread.daemon = True
